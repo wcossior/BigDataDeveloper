@@ -25,7 +25,7 @@ services:
       - ./datanode/sqoop:/datanode/sqoop
     env_file:
       - ./hadoop-hive.env
-    command: sh -c "cp -r /datanode/sqoop /usr/local/ && chmod 777 -R /usr/local/sqoop"
+    #command: sh -c "cp -R /datanode/sqoop/ /usr/local/"
     environment:
       SERVICE_PRECONDITION: "namenode:50070"
     depends_on:
@@ -49,46 +49,46 @@ services:
     env_file: 
       - ./mysql/variables.env
 
-  # hive-server:
-  #   image: bde2020/hive:2.3.2-postgresql-metastore
-  #   container_name: hive-server
-  #   env_file:
-  #     - ./hadoop-hive.env
-  #   environment:
-  #     HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
-  #     SERVICE_PRECONDITION: "hive-metastore:9083"
-  #   ports:
-  #     - "10000:10000"
-  #   depends_on:
-  #     - hive-metastore
-  #   networks:
-  #     net_pet:
-  #       ipv4_address: 172.27.1.7
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+    ports:
+      - "10000:10000"
+    depends_on:
+      - hive-metastore
+    networks:
+      net_pet:
+        ipv4_address: 172.27.1.7
   
-  # hive-metastore:
-  #   image: bde2020/hive:2.3.2-postgresql-metastore
-  #   container_name: hive-metastore
-  #   env_file:
-  #     - ./hadoop-hive.env
-  #   command: /opt/hive/bin/hive --service metastore
-  #   environment:
-  #     SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
-  #   ports:
-  #     - "9083:9083"
-  #   depends_on:
-  #     - hive-metastore-postgresql
-  #   networks:
-  #     net_pet:
-  #       ipv4_address: 172.27.1.8
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
+    ports:
+      - "9083:9083"
+    depends_on:
+      - hive-metastore-postgresql
+    networks:
+      net_pet:
+        ipv4_address: 172.27.1.8
   
-  # hive-metastore-postgresql:
-  #   image: bde2020/hive-metastore-postgresql:2.3.0
-  #   container_name: hive-metastore-postgresql
-  #   depends_on:
-  #     - datanode
-  #   networks:
-  #     net_pet:
-  #       ipv4_address: 172.27.1.9
+  hive-metastore-postgresql:
+    image: bde2020/hive-metastore-postgresql:2.3.0
+    container_name: hive-metastore-postgresql
+    depends_on:
+      - datanode
+    networks:
+      net_pet:
+        ipv4_address: 172.27.1.9
   
 networks:
   net_pet:
