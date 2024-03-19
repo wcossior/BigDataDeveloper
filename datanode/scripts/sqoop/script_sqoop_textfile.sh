@@ -9,7 +9,7 @@ sqoop import \
 --delete-target-dir > /tmp/log_customer.log
 
 sqoop import \
---connect "jdbc:mysql://192.168.220.165:3310/retail_db" \
+--connect "jdbc:mysql://172.16.5.4:3310/retail_db" \
 --username=root \
 --password=root \
 --table departments \
@@ -33,7 +33,7 @@ sqoop import \
 --table orders \
 --as-textfile \
 --target-dir=/user/datapath/datasets/orders \
---delete-target-dir > los_orders.log
+--delete-target-dir > /tmp/log_orders.log
 
 sqoop import \
 --connect "jdbc:mysql://172.16.5.4:3310/retail_db" \
