@@ -164,8 +164,11 @@ CREATE TABLE persons3 (
 )
 PARTITIONED BY (quantity INT);
 
+
+set hive.exec.dynamic.partition.mode=nonstrict
+
 FROM persons
-INSERT OVERWRITE TABLE persons3
+INSERT OVERWRITE TABLE persons3 partition(quantity)
    SELECT * WHERE color='green';
 
 SELECT * FROM persons3;

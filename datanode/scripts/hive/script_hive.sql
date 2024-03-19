@@ -6,7 +6,7 @@ category_name string
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/categories';
+LOCATION 'hdfs:///user/datapath/datasets/categories';
 
 SELECT * FROM categories;
 
@@ -24,7 +24,7 @@ customer_zipcode string
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/customers';
+LOCATION 'hdfs:///user/datapath/datasets/customers';
 
 SELECT * FROM customers ;
 
@@ -35,7 +35,7 @@ department_name string
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/departments';
+LOCATION 'hdfs:///user/datapath/datasets/departments';
 
 SELECT * FROM departments;
 
@@ -46,7 +46,7 @@ department_name string
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/departments_test';
+LOCATION 'hdfs:///user/datapath/datasets/departments_test';
 
 CREATE EXTERNAL TABLE IF NOT EXISTS order_items
 (order_item_id int,
@@ -59,7 +59,7 @@ order_item_product_price float
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/order_items';
+LOCATION 'hdfs:///user/datapath/datasets/order_items';
 
 SELECT * FROM order_items;
 
@@ -72,7 +72,7 @@ order_status string
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/orders';
+LOCATION 'hdfs:///user/datapath/datasets/orders';
 
 SELECT * FROM orders;
 
@@ -87,50 +87,50 @@ product_image string
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 'hdfs:///user/vagrant/datasets/products';
+LOCATION 'hdfs:///user/datapath/datasets/products';
 
 SELECT * FROM products;
 
 CREATE EXTERNAL TABLE categories_avro
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
 STORED as AVRO
-LOCATION 'hdfs:///user/vagrant/datasets/avro/categories'
-TBLPROPERTIES ('avro.schema.url'='hdfs:///user/vagrant/datasets/avro/categories.avsc');
+LOCATION 'hdfs:///user/datapath/datasets/avro/categories'
+TBLPROPERTIES ('avro.schema.url'='hdfs:///user/datapath/datasets/avro/categories.avsc');
 
 
 CREATE EXTERNAL TABLE customers_avro
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
 STORED as AVRO
-LOCATION 'hdfs:///user/vagrant/datasets/avro/customers'
-TBLPROPERTIES ('avro.schema.url'='hdfs:///user/vagrant/datasets/avro/customers.avsc');
+LOCATION 'hdfs:///user/datapath/datasets/avro/customers'
+TBLPROPERTIES ('avro.schema.url'='hdfs:///user/datapath/datasets/avro/customers.avsc');
 
 
 CREATE EXTERNAL TABLE orders_avro
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
 STORED as AVRO
-LOCATION 'hdfs:///user/vagrant/datasets/avro/orders'
-TBLPROPERTIES ('avro.schema.url'='hdfs:///user/vagrant/datasets/avro/orders.avsc');
+LOCATION 'hdfs:///user/datapath/datasets/avro/orders'
+TBLPROPERTIES ('avro.schema.url'='hdfs:///user/datapath/datasets/avro/orders.avsc');
 
 
 CREATE EXTERNAL TABLE order_items_avro
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
 STORED as AVRO
-LOCATION 'hdfs:///user/vagrant/datasets/avro/order_items'
-TBLPROPERTIES ('avro.schema.url'='hdfs:///user/vagrant/datasets/avro/order_items.avsc');
+LOCATION 'hdfs:///user/datapath/datasets/avro/order_items'
+TBLPROPERTIES ('avro.schema.url'='hdfs:///user/datapath/datasets/avro/order_items.avsc');
 
 
 CREATE EXTERNAL TABLE departments_avro
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
 STORED as AVRO
-LOCATION 'hdfs:///user/vagrant/datasets/avro/departments'
-TBLPROPERTIES ('avro.schema.url'='hdfs:///user/vagrant/datasets/avro/departments.avsc');
+LOCATION 'hdfs:///user/datapath/datasets/avro/departments'
+TBLPROPERTIES ('avro.schema.url'='hdfs:///user/datapath/datasets/avro/departments.avsc');
 
 
 CREATE EXTERNAL TABLE products_avro
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
 STORED as AVRO
-LOCATION 'hdfs:///user/vagrant/datasets/avro/products'
-TBLPROPERTIES ('avro.schema.url'='hdfs:///user/vagrant/datasets/avro/products.avsc');
+LOCATION 'hdfs:///user/datapath/datasets/avro/products'
+TBLPROPERTIES ('avro.schema.url'='hdfs:///user/datapath/datasets/avro/products.avsc');
 
 
 describe formatted customers;
