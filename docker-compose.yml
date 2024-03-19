@@ -22,7 +22,7 @@ services:
     volumes:
       - /tmp/hdfs/datanode:/hadoop/dfs/data
       - ./bank:/bank
-      - ./datanode/sqoop:/datanode/sqoop
+      - ./datanode:/datanode
     env_file:
       - ./hadoop-hive.env
     #command: sh -c "cp -R /datanode/sqoop/ /usr/local/"
