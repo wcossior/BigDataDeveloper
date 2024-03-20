@@ -157,7 +157,7 @@ sqoop import \
 --fields-terminated-by '|' \
 --lines-terminated-by '\n' \
 --split-by department_id \
---where "department_id > 3" \
+--where "department_id <= 3" \
 --outdir java_files
 
 --> Exportando a mysql
