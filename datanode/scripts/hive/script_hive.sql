@@ -1,3 +1,8 @@
+
+CREATE DATABASE retail_db;
+
+USE retail_db;
+
 CREATE EXTERNAL TABLE IF NOT EXISTS categories
 (category_id int,
 category_department_id string,

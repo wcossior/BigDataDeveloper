@@ -3,7 +3,7 @@
 -- HIVE SQL Basico
 --
 
-DROP DATABASE IF EXISTS test_db CASCADE;
+DROP DATABASE IF EXISTS retail_db CASCADE;
 
 CREATE DATABASE test_db;
 USE test_db;
