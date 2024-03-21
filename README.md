@@ -29,8 +29,11 @@ Este contenedor contiene una base de datos llamada retail_db y consta de las sig
 - departments
 <br>
 credenciales:
+<br>
 user: root
+<br>
 pass: root
+<br>
 port: 3310
 <br>
 Ejecutar ifconfig en terminal para obtener la ip (eth0)
