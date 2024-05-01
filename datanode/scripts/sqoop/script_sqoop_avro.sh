@@ -1,5 +1,5 @@
 #!/bin/bash
-ssqoop import \
+sqoop import \
 --connect "jdbc:mysql://172.16.5.4:3310/retail_db" \
 --username=root \
 --password=root \
