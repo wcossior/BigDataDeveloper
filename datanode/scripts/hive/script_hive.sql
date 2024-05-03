@@ -150,12 +150,12 @@ describe formatted departments_test;
 SELECT
     customer_id, customer_fname, customer_lname, customer_email, sum(order_item_quantity) as quantity_item_total, sum(order_item_subtotal)as total
 FROM
-    customers as c
+    customers_avro as c
 INNER JOIN
-    orders as o
+    orders_avro as o
     ON c.customer_id = o.order_customer_id
 INNER JOIN
-    order_items as oi
+    order_items_avro as oi
     ON o.order_id = oi.order_item_order_id
 WHERE order_status <> 'CANCELED'
 GROUP BY customer_id, customer_fname, customer_lname, customer_email
@@ -166,12 +166,12 @@ LIMIT 20;
 
 SELECT
     ca.category_name, sum(order_item_quantity) as item_quantity, cast(sum(order_item_subtotal) AS INT )as total
-FROM order_items as oi
+FROM order_items_avro as oi
 INNER JOIN
-    products as p
+    products_avro as p
     ON oi.order_item_product_id = p.product_id
 INNER JOIN
-    categories as ca
+    categories_avro as ca
     ON p.product_category_id = ca.category_id
 GROUP BY ca.category_name;
 
@@ -186,18 +186,18 @@ FROM (SELECT
                 ORDER BY count(category_name) DESC
             ) rank
     FROM
-        customers as c
+        customers_avro as c
     INNER JOIN
-        orders as o
+        orders_avro as o
         ON c.customer_id = o.order_customer_id
     INNER JOIN
-        order_items as oi
+        order_items_avro as oi
         ON o.order_id = oi.order_item_order_id
     INNER JOIN
-        products as p
+        products_avro as p
         ON oi.order_item_product_id = p.product_id
     INNER JOIN
-        categories as ca
+        categories_avro as ca
         ON p.product_category_id = ca.category_id
     GROUP BY customer_city, category_name
     ) t

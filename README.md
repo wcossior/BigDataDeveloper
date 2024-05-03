@@ -37,7 +37,7 @@ pass: root
 port: 3310
 <br>
 Ejecutar ifconfig en terminal para obtener la ip (eth0)
-
+ 
 ## Hadoop
 
 Para poder trabajar con hadoop ingresamos al contenedor del datanode. <br>
